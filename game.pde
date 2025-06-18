@@ -35,11 +35,11 @@ if(skey == true) lefty = lefty + 5;
     if(downkey == true) righty = righty + 5;
   }else{
    if(bally<300){
-     righty = righty - 8;
+     righty = righty - 10;
 
   }else{
     if(bally>300){
-      righty = righty + 8;
+      righty = righty + 10;
     }
   }
   }
@@ -54,7 +54,7 @@ if(skey == true) lefty = lefty + 5;
     //ball
   circle(ballx,bally,balld);
   
- 
+ fill(255);
   //collision
  if(dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2){
     vx = (ballx - rightx)/10;
@@ -112,9 +112,25 @@ if(rightscore>5){
 if(leftscore>5){
   mode = GAMEOVER;
 }
-
+ //pause button
+ fill(255,0,0);
+tactile(75,50,50);
+ circle(75,50,50);
+ fill(255);
+ triangle(55,50,85,35,85,65);
+stroke(255);
+ 
 }
 
 void gameClicks(){
-  
+  if(mouseX> 50 && mouseX<100 && mouseY> 25 && mouseY<75){
+    mode = PAUSE;
+  }
 }
+  void tactile(int x, int y, int r) {
+  if (dist(x, y, mouseX, mouseY)<r) {
+    stroke(255);
+  } else {
+    stroke(0);
+  }
+  }
